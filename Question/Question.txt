@@ -1,0 +1,113 @@
+Rules of the game
+ 
+
+The game is player on a 3 x 3 square board.
+Two players, player-1 and player-2 take turns alternatively starting with player-1.
+A player can place their marker in any of the empty slots.
+A player wins when they have three markers aligned either horizontally, vertically or diagonally.
+The game stops when a player wins.
+ 
+
+Problem statement
+ 
+
+You are provided with two lists (type: List<(int x, int y)>), each corresponding to a board player.
+Considering the board as a 3 x 3 matrix (0-indexed), each list contains the markers placed by the respective board, in order.
+You are required to find the winning marker combination in the order it was played.
+Combination (1, 1), (0, 2), (2, 0) is not same as combination (2, 0), (0, 2), (1, 1) as the order of markers within the combination is different.
+ 
+
+Example 1
+ 
+
+Provided input
+
+List<(int x, int y)> player1Markers = new List<(int x, int y)>
+{
+    (x: 2, y: 2),
+    (x: 1, y: 1),
+    (x: 0, y: 2),
+    (x: 2, y: 0),
+};
+
+List<(int x, int y)> player2Markers = new List<(int x, int y)>
+{
+    (x: 0, y: 1),
+    (x: 0, y: 0),
+    (x: 1, y: 2),
+};
+
+The equivalence in Python translates to list, like below:
+
+player1Markers = [[2, 2], [1, 1], [0, 2], [2, 0]]
+player2Markers = [[0, 1], [0, 0], [1, 2]]
+ 
+
+Expected output
+
+new List<(int x, int y)>
+{
+    (x: 1, y: 1),
+    (x: 0, y: 2),
+    (x: 2, y: 0),
+};
+
+For Python, like below:
+[[1, 1], [0, 2], [2, 0]]
+ 
+
+Explanation 1
+ 
+
+1. The game starts with player-1, placing the marker at (2, 2)
+
+   |   |  
+---+---+--- 
+   |   | 
+---+---+--- 
+   |   | • 
+ 
+
+2. Next, it's player-2 turn, who places the marker at (0, 1)
+
+   | x |  
+---+---+--- 
+   |   | 
+---+---+--- 
+   |   | • 
+ 
+
+3. Player-1 places his marker at (1, 1)
+
+   | x |  
+---+---+--- 
+   | • | 
+---+---+--- 
+   |   | • 
+ 
+
+4. Board representation for the subsequent marker placements are
+
+ x | x |  
+---+---+--- 
+   | • | 
+---+---+--- 
+   |   | • 
+ x | x | • 
+---+---+--- 
+   | • | 
+---+---+--- 
+   |   | • 
+ x | x | • 
+---+---+--- 
+   | • | x
+---+---+--- 
+   |   | • 
+ x | x | • 
+---+---+--- 
+   | • | x
+---+---+--- 
+ • |   | • 
+ 
+
+5. Player-1 wins as the three markers (1, 1), (0, 2), (2, 0) are aligned diagonally.
